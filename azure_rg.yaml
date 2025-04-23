@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  collections:
+    - azure.azcollection
+  tasks:
+    - name: Creating resource group
+      azure_rm_resourcegroup:
+        name: "ansible-rg"
+        location: "westeurope"
+        tags:
+          Purpose: "POC"
+      register: rg
+    - debug:
+        var: rg 
+
+
